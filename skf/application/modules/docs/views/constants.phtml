@@ -1,0 +1,97 @@
+	
+		<!-- MAIN -->
+		<div id="main">
+				
+			<!-- social -->
+			<div id="social-bar">
+				<ul>
+					<li><a href="http://www.facebook.com"  title="Become a fan"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/facebook_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.twitter.com" title="Follow my tweets"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/twitter_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.google.com"  title="Add to the circle"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/google_plus_32.png" alt="Facebook" /></a></li>
+				</ul>
+			</div>
+			<!-- ENDS social -->
+			
+			
+			
+			<!-- Content -->
+			<div id="content">
+			
+				<!-- masthead -->
+		        <div id="masthead">
+					<span class="head">Constants</span><span class="subhead">adminstration documentation</span>
+					<ul class="breadcrumbs">
+						<li><a href="<?php echo PUBLIC_PATH; ?>/">home</a></li>
+						<li><a href="<?php echo PUBLIC_PATH; ?>/"> / docs</a></li>
+						<li>/ constants</li>
+					</ul>
+				</div>
+	        	<!-- ENDS masthead -->
+	        	
+	        	
+	        	
+	        	<!-- page content -->
+	        	<div id="page-content-full">
+	        	
+						
+<p>
+The SKF system comes with several constants to ensure that include paths and public web root paths are always correct. They are.
+</p>
+<dl>
+<dt>SITE_PATH</dt>
+<dd>
+This constant defines the location of the directory in which the main index.php file resides.
+</dd>
+
+<dt>APP_PATH</dt>
+<dd>
+This constant defines the location of the application directory which contains the code to run the system. It is generally considered good practice that this directory not be in the web tree, however, having it as part of the web tree is not fatal and is default to ensure that the application "just works" out-of-the-box. This constant should be used when including ANY files required for the application to run.
+</dd>
+<dd>
+
+<div class="codebox">
+<?php
+$code='
+<?php
+        include APP_PATH . \'/blog/lib/config.php\';
+?>
+';
+highlight_string($code);
+?>
+</div>
+</dd>
+
+<dt>PUBLIC_PATH</dt>
+<dd>
+This is the path of the web root of the system, which effectively gives method to ensure all URL paths are correct. This constant should be used with ALL URL paths in your application.
+</dd>
+<dd>
+
+<div class="codebox">
+<?php
+$code = '
+<?php
+        $link = \'<a href="\'.PUBLIC_PATH.\'/blog/show/123">Link</a>\';
+?>
+';
+highlight_string($code);
+?>
+</div>
+</dd>
+</dl>
+
+					
+	        	</div>
+	        	<!-- ENDS page content -->
+				
+			
+			</div>
+			<!-- ENDS content -->
+			
+			<div class="clearfix"></div>
+			<div class="shadow-main"></div>
+			
+			
+		</div>
+		<!-- ENDS MAIN -->
+		

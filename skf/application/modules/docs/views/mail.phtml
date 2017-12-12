@@ -1,0 +1,92 @@
+	
+		<!-- MAIN -->
+		<div id="main">
+				
+			<!-- social -->
+			<div id="social-bar">
+				<ul>
+					<li><a href="http://www.facebook.com"  title="Become a fan"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/facebook_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.twitter.com" title="Follow my tweets"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/twitter_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.google.com"  title="Add to the circle"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/google_plus_32.png" alt="Facebook" /></a></li>
+				</ul>
+			</div>
+			<!-- ENDS social -->
+			
+			
+			
+			<!-- Content -->
+			<div id="content">
+			
+				<!-- masthead -->
+		        <div id="masthead">
+					<span class="head">Mail</span><span class="subhead">adminstration documentation</span>
+					<ul class="breadcrumbs">
+						<li><a href="<?php echo PUBLIC_PATH; ?>/">home</a></li>
+						<li><a href="<?php echo PUBLIC_PATH; ?>/docs"> / docs</a></li>
+						<li>/ mail</li>
+					</ul>
+				</div>
+	        	<!-- ENDS masthead -->
+	        	
+	        	
+	        	
+	        	<!-- page content -->
+	        	<div id="page-content-full">
+	        	
+<p>
+SKF provides a robust mail class that can use either system mail or a remote mail server. You will need to have access to the remote server for it to allow you to use it. All the basics are covered, To, From Bcc Attachments etc, or, you can simply drop in your own mailer class. The SKF systems is flexible enough to allow the direct use of any third part classes.
+</p>
+
+<div class="codebox">
+<?php
+$code='
+<?php
+try
+{
+        $path = \'/home/kevin/Desktop/kev_banner.jpg\';
+        $sep = sha1( $path );
+        $inline_image = chunk_split( base64_encode( file_get_contents( $path ) ) );
+
+        $html = \'<html><body><h1>An example email message.</h1><img src="cid:PHP-CID-{\'.$sep.\'}" /><h2>More example stuff</h2></body></html>\';
+        
+
+        $m = new xmailer;
+        $html .= $m->addInlineImage( $inline_image, $sep );
+        $m->add($m::MIMEMAIL_HTML, $html);
+        $m->from_email = \'noreply@example.com.au\';
+        $m->from_name = \'Senders Name\';
+
+        $m->addHeader( \'cc\', \'somebody_else@example.com\' );
+
+        $m->to_name = \'Kevin Waterson\';
+        $m->to_email = \'kevin@example.com\';
+
+        $m->subject = \'Test Email\';
+        $m->send();
+}
+catch( Exception $e )
+{
+        echo $e->getMessage();
+}
+
+?>
+';
+highlight_string($code);
+?>
+</div>
+
+					
+	        	</div>
+	        	<!-- ENDS page content -->
+				
+			
+			</div>
+			<!-- ENDS content -->
+			
+			<div class="clearfix"></div>
+			<div class="shadow-main"></div>
+			
+			
+		</div>
+		<!-- ENDS MAIN -->
+		

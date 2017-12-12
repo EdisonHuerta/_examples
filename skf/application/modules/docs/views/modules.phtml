@@ -1,0 +1,81 @@
+	
+		<!-- MAIN -->
+		<div id="main">
+				
+			<!-- social -->
+			<div id="social-bar">
+				<ul>
+					<li><a href="http://www.facebook.com"  title="Become a fan"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/facebook_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.twitter.com" title="Follow my tweets"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/twitter_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.google.com"  title="Add to the circle"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/google_plus_32.png" alt="Facebook" /></a></li>
+				</ul>
+			</div>
+			<!-- ENDS social -->
+			
+			
+			
+			<!-- Content -->
+			<div id="content">
+			
+				<!-- masthead -->
+		        <div id="masthead">
+					<span class="head">Modules</span><span class="subhead">adminstration documentation</span>
+					<ul class="breadcrumbs">
+						<li><a href="<?php echo PUBLIC_PATH; ?>/">home</a></li>
+						<li><a href="<?php echo PUBLIC_PATH; ?>/docs">/docs</a></li>
+						<li>/ modules</li>
+					</ul>
+				</div>
+	        	<!-- ENDS masthead -->
+	        	
+	        	
+	        	
+	        	<!-- page content -->
+	        	<div id="page-content-full">
+	        	
+<p>
+The modular architecture of SKF allows for easy drop in modules to be created each module will have its own controller and view directory to hold its contents. This allows for easy addition of removal of a module, without interfering with any other part of the system. The tree looks like this.
+</p>
+
+<div class="displaybox">
+application +<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ modules +<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br />
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + blog +<br />
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | <br />
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + controllers<br />
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + views<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + assets<br />
+</div>
+
+<p>
+SKF comes with a front end tool that will create your directory structure, and all the files required for a functioning module. The skeleton tool is linked from admin panel and should be secured accordingly. This tool creates the controller, view, assets directories, and admin contorller and views also.
+</p>
+<p>
+Failure to secure this directory could result people creating modules ad infinitum on your system. YOU HAVE BEEN WARNED!
+</p>
+<p>
+The skeleton creation is found at http://your_site/skeleton
+</p>
+
+
+					
+	        	</div>
+	        	<!-- ENDS page content -->
+				
+			
+			</div>
+			<!-- ENDS content -->
+			
+			<div class="clearfix"></div>
+			<div class="shadow-main"></div>
+			
+			
+		</div>
+		<!-- ENDS MAIN -->
+		

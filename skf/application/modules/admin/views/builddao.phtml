@@ -1,0 +1,43 @@
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Rebuild DAO's</h1>
+                    </div>
+			<div class="content-area">
+			This page allows the creation of Data Access Objects located in the application/lib/objects directory. If this directory does not exist, the script will attempt to create it. This form should not be included in your live site, or at least be very well secured. You will typically run this whenever you have made a change you your database schema.
+			</div>
+
+
+<div class="alert alert-<?php echo $alert_status; ?> alert-dismissable">
+<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+<?php echo $alert_message; ?>.
+</div>
+
+
+              <h4 class="heading4">Table Name is Optional</h4>
+              <form class="form-vertical" action="/admin/builddao" method="post">
+                <fieldset>
+                  <div class="control-group">
+                    <label  class="control-label">Table Name: <?php echo $table_name_error; ?></label>
+                    <div class="controls">
+                      <input type="text" class="span3" name="table_name" maxlength="100" value="<?php echo $table_name; ?>" />
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                  <input type="submit" class="btn btn-success" value="Build" />
+                  <!-- <a href="/user/login" class="btn btn-success">Login</a> -->
+                </fieldset>
+              </form>
+
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+

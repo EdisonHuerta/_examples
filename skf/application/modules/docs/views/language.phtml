@@ -1,0 +1,73 @@
+	
+		<!-- MAIN -->
+		<div id="main">
+				
+			<!-- social -->
+			<div id="social-bar">
+				<ul>
+					<li><a href="http://www.facebook.com"  title="Become a fan"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/facebook_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.twitter.com" title="Follow my tweets"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/twitter_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.google.com"  title="Add to the circle"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/google_plus_32.png" alt="Facebook" /></a></li>
+				</ul>
+			</div>
+			<!-- ENDS social -->
+			
+			
+			
+			<!-- Content -->
+			<div id="content">
+			
+				<!-- masthead -->
+		        <div id="masthead">
+					<span class="head">Languages</span><span class="subhead">adminstration documentation</span>
+					<ul class="breadcrumbs">
+						<li><a href="<?php echo PUBLIC_PATH; ?>/">home</a></li>
+						<li><a href="<?php echo PUBLIC_PATH; ?>/docs"> / docs</a></li>
+						<li>/ languages</li>
+					</ul>
+				</div>
+	        	<!-- ENDS masthead -->
+	        	
+	        	
+	        	
+	        	<!-- page content -->
+	        	<div id="page-content-full">
+	        	
+<p>
+Setting language translations in SKF is quite simple. You merely set the lang config option in the application/config/config.ini.php file to your language of choice and the language class is loaded automatically for you. The defaule is "en" or english. A demonstration french translation class is also provided, but you can make up as many as you like.
+</p>
+
+<p>
+The language classes themselves, reside in application/lang directory and simply contain class constants to do the translations. The demonstration menu in the layout makes use of these. Here is how to call a language constant.
+</p>
+
+<div class="codebox">
+<?php
+$code='
+<?php
+        echo lang::__HOME; 
+?>
+';
+highlight_string($code);
+?>
+</div>
+
+<p>
+Thats it. Thats all you need to do to provide a simple and effecting multi language implementation.
+</p>
+
+					
+	        	</div>
+	        	<!-- ENDS page content -->
+				
+			
+			</div>
+			<!-- ENDS content -->
+			
+			<div class="clearfix"></div>
+			<div class="shadow-main"></div>
+			
+			
+		</div>
+		<!-- ENDS MAIN -->
+		

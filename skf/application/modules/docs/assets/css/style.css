@@ -1,0 +1,17 @@
+.displaybox {
+    background-color:  #f4f4f4;
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #d6cfb5;
+    overflow: auto;
+}
+
+
+div.codebox{
+    margin: 5px;
+    padding: 10px;
+    background-color: #FFFAF0;
+    border:1px solid #d6cfb5;
+    overflow: auto;
+}
+

@@ -1,0 +1,127 @@
+	
+		<!-- MAIN -->
+		<div id="main">
+				
+			<!-- social -->
+			<div id="social-bar">
+				<ul>
+					<li><a href="http://www.facebook.com"  title="Become a fan"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/facebook_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.twitter.com" title="Follow my tweets"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/twitter_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.google.com"  title="Add to the circle"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/google_plus_32.png" alt="Facebook" /></a></li>
+				</ul>
+			</div>
+			<!-- ENDS social -->
+			
+			
+			
+			<!-- Content -->
+			<div id="content">
+			
+				<!-- masthead -->
+		        <div id="masthead">
+					<span class="head">View</span><span class="subhead">adminstration documentation</span>
+					<ul class="breadcrumbs">
+						<li><a href="<?php echo PUBLIC_PATH; ?>/">home</a></li>
+						<li><a href="<?php echo PUBLIC_PATH; ?>/docs"> / docs</a></li>
+						<li>/ view</li>
+					</ul>
+				</div>
+	        	<!-- ENDS masthead -->
+	        	
+	        	
+	        	
+	        	<!-- page content -->
+	        	<div id="page-content-full">
+	        	
+<p>
+The view class is called in by the controller, and sets up the content to include in the layout. The layout contains a variable called "$content" which takes the view data, and renders it. This following example is taken from the index controllers, index method.
+</p>
+
+<p>
+Note that template, or view files, use the extention .phtml. This is to avoid confusion with other files.
+</p>
+
+<div class="codebox">
+<?php
+$code='
+<?php
+                /*** a new view instance ***/
+                $tpl = new view;
+
+                /*** turn caching on for this page ***/
+                $view->setCaching(true);
+
+                /*** set the template dir ***/
+                $tpl->setTemplateDir(APP_PATH . \'/modules/index/views\');
+
+                /*** the include template ***/
+                $tpl->include_tpl = APP_PATH . \'/views/index/index.phtml\';
+
+                /*** a view variable ***/
+                $this->view->title = \'SKF - Development Made Easy\';
+                $this->view->heading = \'SKF\';
+
+                /*** the cache id is based on the file name ***/
+                $cache_id = md5( \'admin/index.phtml\' );
+
+                /*** fetch the template ***/
+                $this->content = $tpl->fetch( \'index.phtml\',
+?>
+';
+highlight_string($code);
+?>
+</div>
+
+<p>
+The default layout is named index.phtml and is found in application/layouts/index.phtml. You can change the default layout to use a different layout by specifying it in your controller.
+</p>
+	
+<div class="codebox">
+<?php
+$code='
+<?php
+                /*** a new view instance ***/
+                $tpl = new view;
+
+                /*** turn caching on for this page ***/
+                $view->setCaching(true);
+
+		/*** set a different layout ***/
+		$this->layout = \'another_layout_template.phtml\';
+
+                /*** set the template dir ***/
+                $tpl->setTemplateDir(APP_PATH . \'/modules/index/views\');
+
+                /*** the include template ***/
+                $tpl->include_tpl = APP_PATH . \'/views/index/index.phtml\';
+
+                /*** a view variable ***/
+                $this->view->title = \'SKF - Development Made Easy\';
+                $this->view->heading = \'SKF\';
+
+                /*** the cache id is based on the file name ***/
+                $cache_id = md5( \'admin/index.phtml\' );
+
+                /*** fetch the template ***/
+                $this->content = $tpl->fetch( \'index.phtml\',
+?>
+';
+highlight_string($code);
+?>
+</div>
+
+				
+	        	</div>
+	        	<!-- ENDS page content -->
+				
+			
+			</div>
+			<!-- ENDS content -->
+			
+			<div class="clearfix"></div>
+			<div class="shadow-main"></div>
+			
+			
+		</div>
+		<!-- ENDS MAIN -->
+		

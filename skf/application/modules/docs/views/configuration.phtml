@@ -1,0 +1,86 @@
+	
+		<!-- MAIN -->
+		<div id="main">
+				
+			<!-- social -->
+			<div id="social-bar">
+				<ul>
+					<li><a href="http://www.facebook.com"  title="Become a fan"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/facebook_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.twitter.com" title="Follow my tweets"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/twitter_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.google.com"  title="Add to the circle"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/google_plus_32.png" alt="Facebook" /></a></li>
+				</ul>
+			</div>
+			<!-- ENDS social -->
+			
+			
+			
+			<!-- Content -->
+			<div id="content">
+			
+				<!-- masthead -->
+		        <div id="masthead">
+					<span class="head">Configuration</span><span class="subhead">adminstration documentation</span>
+					<ul class="breadcrumbs">
+						<li><a href="<?php echo PUBLIC_PATH; ?>/">home</a></li>
+						<li><a href="<?php echo PUBLIC_PATH; ?>/docs"> / docs</a></li>
+						<li>/ configuration</li>
+					</ul>
+				</div>
+	        	<!-- ENDS masthead -->
+	        	
+	        	
+	        	
+	        	<!-- page content -->
+	        	<div id="page-content-full">
+	        	
+						
+					<p>
+					The documentation of SKF is an on-going process with some features better documented than others. If you feel something could be explained better, or there is something missing, submit a patch, dont whine!
+					</p>
+					
+<p>
+The main config file is located in application/config/config.ini.php. This is a standard ini file which contains all settting for the application. It can be used globally for any modules you develop. Calling config options is a simple matter of getting the config instance and the section. This example shows how you would show the application version from the config file.
+</p>
+<?php
+$code='
+<?php
+        $config = new config; 
+        $version =  $config->config_values[\'application\'][\'version\'];
+?>
+';
+highlight_string($code);
+?>
+
+<p>
+Each module may also have its own config.ini.php file. This file must located in application/&lt;module name&gt;/config/config.ini.php
+</p>
+<p>
+When this file is in place, the config values are are added automatically to the config_values array and are available globally as seen above. Care should be taken by module creators not to over write config values in other modules.
+</p>
+
+<p>
+Of course, if you do not wish to have a seperate config file for each module, the values can simply be added to the main system config.ini.php file.
+</p>
+<h2>Some config options</h2>
+<dl>
+<dt>domain</dt>
+<dd>single - if the installation is to be used for a single domain</dd>
+<dd>multi = if the installation is to be used for multiple domains from a single code base</dd>
+
+</dl>
+
+					
+	        	</div>
+	        	<!-- ENDS page content -->
+				
+			
+			</div>
+			<!-- ENDS content -->
+			
+			<div class="clearfix"></div>
+			<div class="shadow-main"></div>
+			
+			
+		</div>
+		<!-- ENDS MAIN -->
+		

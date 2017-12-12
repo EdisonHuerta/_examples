@@ -1,0 +1,83 @@
+	
+		<!-- MAIN -->
+		<div id="main">
+				
+			<!-- social -->
+			<div id="social-bar">
+				<ul>
+					<li><a href="http://www.facebook.com"  title="Become a fan"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/facebook_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.twitter.com" title="Follow my tweets"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/twitter_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.google.com"  title="Add to the circle"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/google_plus_32.png" alt="Facebook" /></a></li>
+				</ul>
+			</div>
+			<!-- ENDS social -->
+			
+			
+			
+			<!-- Content -->
+			<div id="content">
+			
+				<!-- masthead -->
+		        <div id="masthead">
+					<span class="head">Namespaces</span><span class="subhead">adminstration documentation</span>
+					<ul class="breadcrumbs">
+						<li><a href="<?php echo PUBLIC_PATH; ?>/">home</a></li>
+						<li><a href="<?php echo PUBLIC_PATH; ?>/docs"> / docs</a></li>
+						<li>/ namespaces</li>
+					</ul>
+				</div>
+	        	<!-- ENDS masthead -->
+	        	
+	        	
+	        	
+	        	<!-- page content -->
+	        	<div id="page-content-full">
+	        	
+<p>
+Each Module created with the module creation tool creates a standardized structure for your modules. Within the directory structure, below the module_name directory is a directory named assets. eg: If this was the blog module, the directory would be in application/modules/blog assets. Within the assets directory is two more directories, js and css. These directories can contain any number of javascript and CSS files respectively. When the system finds a javascript file within the js directory, or a css file within the css directory, the contents of the files are munged (tm) together into a single variable named $javascript and $css.
+</p>
+<p>
+These variables are available to the view so they can be used in document head, which will, in turn, echo the CSS or javascript directly to the page.
+</p>
+
+<p>
+In this default installation, the application/layouts/header.php file contains the following code.
+</p>
+<div class="codebox">
+<?php
+$code='
+                <style type="text/css">
+                <?php echo $css; ?>
+                </style>
+
+                <script language="javascript" type="text/javascript">
+                <?php echo $javascript; ?>
+                </script>
+
+';
+highlight_string($code);
+?>
+</div>
+
+<p>
+The above code echo's the css and javascript variables which contain any custom css or javascript found in the js or css directories in the modules assets directory.
+</p>
+
+<p>
+This docs module contains a file in application/modules/docs/assets/css/style.css. This file contains the custom css used only within this module, so makes little sense to bloat the css space when not in use.
+</p>
+					
+	        	</div>
+	        	<!-- ENDS page content -->
+				
+			
+			</div>
+			<!-- ENDS content -->
+			
+			<div class="clearfix"></div>
+			<div class="shadow-main"></div>
+			
+			
+		</div>
+		<!-- ENDS MAIN -->
+		

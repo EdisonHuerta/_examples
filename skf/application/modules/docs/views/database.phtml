@@ -1,0 +1,118 @@
+	
+		<!-- MAIN -->
+		<div id="main">
+				
+			<!-- social -->
+			<div id="social-bar">
+				<ul>
+					<li><a href="http://www.facebook.com"  title="Become a fan"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/facebook_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.twitter.com" title="Follow my tweets"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/twitter_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.google.com"  title="Add to the circle"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/google_plus_32.png" alt="Facebook" /></a></li>
+				</ul>
+			</div>
+			<!-- ENDS social -->
+			
+			
+			
+			<!-- Content -->
+			<div id="content">
+			
+				<!-- masthead -->
+			<div id="masthead">
+					<span class="head">Database</span><span class="subhead">adminstration documentation</span>
+					<ul class="breadcrumbs">
+						<li><a href="<?php echo PUBLIC_PATH; ?>/">home</a></li>
+						<li><a href="<?php echo PUBLIC_PATH; ?>/docs"> / docs</a></li>
+						<li>/ database</li>
+					</ul>
+				</div>
+			<!-- ENDS masthead -->
+			
+			
+			
+			<!-- page content -->
+			<div id="page-content-full">
+			
+						
+<p>
+Database connectivity and use is simple using SKF. The database class extends PHP PDO which allows you to use all the PDO functions PHP has to offer. Connection is simply done by passing variables from the config file to the constructor. Note the order of parameters to pass.
+</p>
+
+<div class="codebox">
+<?php
+$code='
+<?php
+	// connect to database
+	$config = new config;
+	$this->view->version = $config->config_values[\'application\'][\'version\'];
+	$db_type = $config->config_values[\'database\'][\'db_type\'];
+	$db_host = $config->config_values[\'database\'][\'db_host\'];
+	$db_name = $config->config_values[\'database\'][\'db_name\'];
+	$db_user = $config->config_values[\'database\'][\'db_user\'];
+	$db_pass = $config->config_values[\'database\'][\'db_pass\'];
+	$db_port = $config->config_values[\'database\'][\'db_port\'];
+	$db = new db( $db_type, $db_host, $db_name, $db_user, $db_pass, $db_port );
+	$db->prepare( "SELECT * FROM my_table" );
+?>
+';
+highlight_string($code);
+?>
+</div>
+
+<p>
+The configuration of the database connection is governed by the config.ini.php file in the database section. There you will see something like this..
+</p>
+
+<div class="displaybox">
+<pre>
+[database]
+db_type = mysql
+db_name = web2bb
+db_hostname = localhost
+db_username = username
+db_password = password
+db_port = 3306
+</pre>
+</div>
+<p>
+As the system uses PDO as the interface, all the functionality of PDO is available from this single instance.
+
+<div class="codebox">
+<?php
+$code = '
+<?php
+	// connect to database
+	$db = new db( $db_type, $db_host, $db_name, $db_user, $db_pass, $db_port );
+
+	$sql = "SELECT blog_heading, blog_text FROM my_blog WHERE blog_id=:blog_id";
+
+	$stmt = $db->prepare( $sql );
+
+	$stmt->bindParam(":blog_id", $blog_id, PDO::PARAM_INT );
+
+	$stmt->execute();
+
+	$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+';
+highlight_string($code);
+?>
+</div>
+
+</dd>
+</dl>
+
+			</div>
+			<!-- ENDS page content -->
+				
+			
+			</div>
+			<!-- ENDS content -->
+			
+			<div class="clearfix"></div>
+			<div class="shadow-main"></div>
+			
+			
+		</div>
+		<!-- ENDS MAIN -->
+		

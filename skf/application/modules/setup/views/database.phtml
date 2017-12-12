@@ -1,0 +1,86 @@
+	
+		<!-- MAIN -->
+		<div id="main">
+				
+			<!-- social -->
+			<div id="social-bar">
+				<ul>
+					<li><a href="http://www.facebook.com"  title="Become a fan"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/facebook_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.twitter.com" title="Follow my tweets"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/twitter_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.google.com"  title="Add to the circle"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/google_plus_32.png" alt="Facebook" /></a></li>
+				</ul>
+			</div>
+			<!-- ENDS social -->
+			
+			
+			
+			<!-- Content -->
+			<div id="content">
+			
+				<!-- masthead -->
+			<div id="masthead">
+					<span class="head">Setup</span><span class="subhead">SKF setup wizard</span>
+					<ul class="breadcrumbs">
+						<li><a href="<?php echo PUBLIC_PATH; ?>/">home</a></li>
+						<li>/ setup</li>
+					</ul>
+				</div>
+			<!-- ENDS masthead -->
+			
+			
+			
+			<!-- page content -->
+			<div id="page-content">
+			
+					<!-- form -->
+					<script type="text/javascript" src="<?php echo PUBLIC_PATH; ?>/assets/js/form-validation.js"></script>
+					<form action="<?php echo PUBLIC_PATH; ?>/setup/database" method="post">
+						<h3 class="heading">Set up the SKF Database</h3>
+						<fieldset>
+							<div>
+								<select name="database_type" class="form-poshytip" title="Which Database?">
+								<option value="mysql">MySQL</option>
+								<option value="pgsql">PostreSQL</option>
+								<option value="sqlite">SQLite</option>
+								<option value="nodb">No Database</option>
+								</select>
+								<label>Database Type</label>
+							</div>
+							<p><input type="submit" value="Next" name="module_build" id="submit" /> <span id="error" class="warning"><?php echo $msg; ?></span></p>
+						</fieldset>
+						
+					</form>
+					<p id="sent-form-msg" class="success">Form data sent. Thanks for your comments.</p>
+					<div><?php echo $msg; ?></div>
+					<!-- ENDS form -->
+						
+				
+			</div>
+			<!-- ENDS page content -->
+			
+			
+			<!-- sidebar -->
+			<aside id="sidebar">
+				<div class="block">
+					<h4>Usage</h4>
+					<p>
+					This form creates a module of the name entered into the text field. The newly created module directory will be found in the /applications/modules directory and will contain the controller, view assets directories which will enable the module to function immediately. No CSS is added and is left to the user to style and modify as required.
+					</p>
+					
+				</div>			
+			</aside>
+			<div class="clearfix"></div>
+				<!-- ENDS sidebar -->
+				
+				
+			
+			</div>
+			<!-- ENDS content -->
+			
+			<div class="clearfix"></div>
+			<div class="shadow-main"></div>
+			
+			
+		</div>
+		<!-- ENDS MAIN -->
+		

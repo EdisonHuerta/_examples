@@ -1,0 +1,285 @@
+	
+		<!-- MAIN -->
+		<div id="main">
+				
+			<!-- social -->
+			<div id="social-bar">
+				<ul>
+					<li><a href="http://www.facebook.com"  title="Become a fan"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/facebook_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.twitter.com" title="Follow my tweets"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/twitter_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.google.com"  title="Add to the circle"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/google_plus_32.png" alt="Facebook" /></a></li>
+				</ul>
+			</div>
+			<!-- ENDS social -->
+			
+			
+			
+			<!-- Content -->
+			<div id="content">
+			
+				<!-- masthead -->
+		        <div id="masthead">
+					<span class="head">Events</span><span class="subhead">adminstration documentation</span>
+					<ul class="breadcrumbs">
+						<li><a href="<?php echo PUBLIC_PATH; ?>/">home</a></li>
+						<li><a href="<?php echo PUBLIC_PATH; ?>/docs"> / docs</a></li>
+						<li>/ events</li>
+					</ul>
+				</div>
+	        	<!-- ENDS masthead -->
+	        	
+	        	
+	        	
+	        	<!-- page content -->
+	        	<div id="page-content-full">
+	        	
+						
+<p>
+When we look into the code of the index controller, we see a method called signup. It looks like this..
+</p>
+
+<div class="codebox">
+<?php
+
+$code = '
+<?php
+        public function signup()
+        {
+                // a new event
+                $signup = new signup;
+                $signup->username = \'freddy\';
+                $signup->password = \'queen\';
+                $signup->ip_address = \'127.0.0.1\';
+
+                // Attach classes to observer/listen for a login event
+                $signup_emailer = new signupemailer;
+                $signup->attach( $signup_emailer );
+                // $signup->attach( new signupemailer );
+
+               /*** a new view instance ***/
+                $tpl = new view;
+
+                /*** turn caching on for this page ***/
+                $tpl->setCaching(true);
+
+                /*** set the template dir ***/
+                $tpl->setTemplateDir(APP_PATH . \'/modules/index/views\');
+
+                /*** the include template ***/
+                $tpl->include_tpl = APP_PATH . \'/views/index/signup.phtml\';
+
+
+                // check here for signup message
+                if( $signup->init() !== false )
+                {
+                        $tpl->message = "Signup success";
+                }
+                else
+                {
+                        $tpl->message = print_r( $signup->status, 1 );
+                }
+                $tpl->signup_message = $signup_emailer->signup_message;
+
+               /*** a view variable ***/
+                $this->view->title = \'SKF - Events\';
+                $this->view->heading = \'SKF Events\';
+
+                /*** the cache id is based on the file name ***/
+                $cache_id = md5( \'index/signup.phtml\' );
+
+                /*** fetch the template ***/
+                $this->content = $tpl->fetch( \'signup.phtml\', $cache_id);
+        }
+';
+highlight_string( $code );
+
+?>
+</div>
+
+<p>
+In the above code, and new signup event is created, and some class properties set, username, password, and ip address. The signup class extends the SKF event class, which implements SplObserver. Lets look at the signup class..
+</p>
+
+<div class="codebox">
+<?php
+
+$code = '
+<?php
+
+namespace skf;
+
+class signup extends event{
+
+        const USERNAME_TAKEN = 1;
+        const USERNAME_TOO_SHORT = 2;
+        const USERNAME_TOO_LONG = 3;
+        const ALLOW = 4;
+
+        public $status = array();
+        public $username, $password, $ip_address;
+
+        public function init()
+        {
+                // Let\'s simulate different signin conditions
+                $this->setStatus( rand( 1, 4 ) );
+
+                // Notify all the observers of a change
+                $this->notify();
+
+                if ( $this->status[0] == self::ALLOW ) {
+                        return true;
+                }
+                return false;
+        }
+
+        private function setStatus( $status ) {
+                $this->status = array( $status, $this->username, $this->password, $this->ip_address );
+        }
+
+        public function getStatus() {
+                return $this->status;
+        }
+}
+
+';
+highlight_string( $code );
+
+?>
+</div>
+
+<p>
+The signup class imitates a signup request, and defines several constants to define the state of the request. In the init() method, this is randomised for use as a mock up.
+</p>
+
+<p>
+In the controller, a signupEmailers is passed to the attach method of the signup class. The signupEmailer class is an observer, or listener, and waits for a change in state of the Subject, the subject, is the signup event. The signupEmailer class implements SplObserver to attain this watchful state.
+</p>
+
+<div class="codebox">
+<?php
+
+$code = '
+<?php
+
+namespace skf;
+
+class signupEmailer extends mailer implements \SplObserver{
+
+        public $signup_message;
+
+        public function update( \SplSubject $SplSubject )
+        {
+                $status = $SplSubject->getStatus();
+                switch ( $status[0] ) {
+
+                        case signup::USERNAME_TAKEN:
+                                $this->signup_message =  __CLASS__ . ": Username taken!.\n";
+                                break;
+
+                        case signup::USERNAME_TOO_LONG:
+                                $this->signup_message =  __CLASS__ . ": Username too long.\n";
+                                break;
+
+                        case signup::USERNAME_TOO_SHORT:
+                                $this->signup_message =  __CLASS__ . ": Username is too short.\n";
+                                break;
+
+                        case signup::ALLOW:
+                                $this->signup_message =   __CLASS__ . ": Username is good, Emailing admin success\n";
+                                break;
+
+                        default: throw new Exception( "Invalid status\n" );
+                }
+        }
+} // end of mailer class
+
+
+';
+highlight_string( $code );
+
+?>
+</div>
+
+<p>
+The above class extends the built in mailer class, and takes note of the status of the  signup event generated in the signup class. Depending on the status of the signup, a message is assinged. This message is then accessed in the index controller signup method, and passed to the view.
+</p>
+
+<p>
+The init() method is called from the controller, which will return boolean and accordingly assign a message to the view also. In a real life application, an email would be sent from the signup emailer class rather than simply displaying a message.
+</p>
+
+<p>
+Adding extra listeners to an event is simple. All that is required is to add another attach(). To add a logging of a message when a user signs up, or attempts to sign up, create a log class which extends the built in logging class, and have it implement SplObserver. eg:
+</p>
+
+<div class="codebox">
+<?php
+
+$code = '
+<?php
+        class logger extends log implements splObserver{
+
+                public function update( SplSubject $SplSubject )
+                {
+                        echo __CLASS__." : Logged an event\n";
+                }
+        }
+';
+highlight_string( $code );
+
+?>
+</div>
+
+<p>
+Then in the controller, you simply attach this class
+</p>
+
+<div class="codebox">
+<?php
+
+$code = '
+<?php
+        $signup->attach( new signuplogger() );
+
+';
+highlight_string( $code );
+
+?>
+</div>
+
+<p>
+The event class makes use of PRE and POST event storage, and by adding a second argument the order in which the events are carried out can be altered. For example, you may wish to check for if a username is already in use before assigning to the new user. To do this simply add the number 1 as the second arg. The number 2 is the default.
+</p>
+
+<div class="codebox">
+<?php
+
+$code = '
+<?php
+        // this event will be run before the event
+        $signup->attach( new signupcheckuser(), 1 );
+';
+highlight_string( $code );
+
+?>
+</div>
+
+<p>
+By refreshing the page <a href="/index/signup">/index/signup</a> you will be able to see the changes in states fired by the event system as the messages are displayed.
+</p>
+
+					
+	        	</div>
+	        	<!-- ENDS page content -->
+				
+			
+			</div>
+			<!-- ENDS content -->
+			
+			<div class="clearfix"></div>
+			<div class="shadow-main"></div>
+			
+			
+		</div>
+		<!-- ENDS MAIN -->
+		

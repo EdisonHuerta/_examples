@@ -1,0 +1,6 @@
+<h1>MODULE_TITLE</h1>
+
+<p>
+This is the skeleton module view file. Replace this content with your own to
+customize.
+</p>

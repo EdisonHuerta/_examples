@@ -1,0 +1,40 @@
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Generate New Module</h1>
+                    </div>
+<div class="content-area">
+This form creates a module of the name entered into the text field. The newly created module directory will be found in the /applications/modules directory and will contain the controller, view assets directories which will enable the module to function immediately. No CSS is added and is left to the user to style and modify as required.
+</div>
+
+<div class="alert alert-<?php echo $alert_status; ?> alert-dismissable">
+<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+<?php echo $alert_message; ?>.
+</div>
+
+
+<form action="<?php echo PUBLIC_PATH; ?>/skeleton" method="post">
+<h3 class="heading">Create a new module skeleton</h3>
+<p> Use this form to create all the files and directories for a new system module </p>
+<fieldset>
+<div>
+     <input type="text" name="module_name" maxlength="50" class="form-poshytip" title="Enter module name" />
+      <label>Module Name</label>
+</div>
+<p><input type="submit" value="Create" name="module_build" id="submit" /></p>
+</fieldset>
+
+</form>
+
+
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+

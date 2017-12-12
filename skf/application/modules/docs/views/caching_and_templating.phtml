@@ -1,0 +1,147 @@
+	
+		<!-- MAIN -->
+		<div id="main">
+				
+			<!-- social -->
+			<div id="social-bar">
+				<ul>
+					<li><a href="http://www.facebook.com"  title="Become a fan"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/facebook_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.twitter.com" title="Follow my tweets"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/twitter_32.png"  alt="Facebook" /></a></li>
+					<li><a href="http://www.google.com"  title="Add to the circle"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/social/google_plus_32.png" alt="Facebook" /></a></li>
+				</ul>
+			</div>
+			<!-- ENDS social -->
+			
+			
+			
+			<!-- Content -->
+			<div id="content">
+			
+				<!-- masthead -->
+		        <div id="masthead">
+					<span class="head">caching  and templating</span><span class="subhead">Administration</span>
+					<ul class="breadcrumbs">
+						<li><a href="<?php echo PUBLIC_PATH; ?>/">home</a></li>
+						<li><a href="<?php echo PUBLIC_PATH; ?>/docs"> / docs</a></li>
+						<li>/ caching and templating</li>
+					</ul>
+				</div>
+	        	<!-- ENDS masthead -->
+	        	
+	        	
+	        	
+	        	<!-- posts content -->
+	        	<div id="post-content">
+	        	
+						
+					<div class="content-area">
+<p>
+Caching is turned on simply by using the setCaching() method.
+</p>
+
+<div class="codebox">
+<?php
+$code = '
+<?php
+        /*** a new view instance ***/
+        $view = new view;
+
+        /*** turn caching on for this page ***/
+        $view->setCaching(true);
+?>';
+echo highlight_string($code,1);
+?>
+</div>
+
+<p>
+The cache_id is set from the controller and is in the format of /path/filename.php/options.
+</p>
+<div class="codebox">
+<?php
+$code = '
+<?php
+        /*** the path to the template ***/
+        $path =APP_PATH . \'/views/index.php\';
+
+        /*** a new view instance ***/
+        $view = new view;
+
+        /*** set the cache id ***/
+        $view->cache_id = md5( $path );
+
+        /*** fetch the template ***/
+        $result = $view->fetch( $path );
+
+        /*** a new front controller ***/
+        $fc = FrontController::getInstance();
+
+        /*** set the body ***/
+        $fc->setBody($result);
+?>';
+echo highlight_string($code,1);
+?>
+</div>
+
+<p>
+To get add options, that may have been passed via the url or other source, it would be like this
+</p>
+<div class="codebox">
+<?php
+$code = '
+<?php
+/*** the path to the template ***/
+$path =APP_PATH . \'/views/index.php\';
+
+        /*** a new uri instance ***/
+        $uri = uri::getInstance();
+
+        /*** get an option from the uri ***/
+        $options = $uri->fragment(1);
+
+/*** a new view instance ***/
+$view = new view;
+
+/*** set the cache id ***/
+$view->cache_id = md5( $path );
+
+/*** fetch the template ***/
+$result = $view->fetch( $path.$options );
+
+/*** a new front controller ***/
+$fc = FrontController::getInstance();
+
+/*** set the body ***/
+$fc->setBody($result);
+?>';
+echo highlight_string($code,1);
+?>
+</div>
+
+</div> <!-- end content area -->
+						
+	        		
+	        	
+	        	<!-- sidebar -->
+	        	<aside id="sidebar">
+	        		
+	        		<div class="block">
+		        		<h4>notes</h4>
+					By default, caching is turned off to avoid caching of content that may not require caching.
+	        		</div>
+	        		
+	        	</aside>
+	        	<div class="clearfix"></div>
+				<!-- ENDS sidebar -->
+				
+				
+			
+			</div>
+			<!-- ENDS content -->
+			
+			<div class="clearfix"></div>
+			<div class="shadow-main"></div>
+			
+			
+		</div>
+		<!-- ENDS MAIN -->
+		

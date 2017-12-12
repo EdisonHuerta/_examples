@@ -1,0 +1,216 @@
+<!doctype html>
+<html class="no-js">
+
+    <head>
+        <meta charset="utf-8"/>
+        <title><?php echo $title; ?></title>
+
+        <!--[if lt IE 9]>
+                <script src="<?php echo PUBLIC_PATH; ?>/assets/js/css3-mediaqueries.js"></script>
+        <![endif]-->
+        <link rel="stylesheet" media="all" href="<?php echo PUBLIC_PATH; ?>/assets/css/style.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
+
+        <!-- JS -->
+        <script src="<?php echo PUBLIC_PATH; ?>/assets/js/jquery-1.6.4.min.js"></script>
+
+<!--  <script src="<?php echo PUBLIC_PATH; ?>/assets/js/less-grid-4.js"></script> -->
+        <script src="<?php echo PUBLIC_PATH; ?>/assets/js/custom.js"></script>
+        <script src="<?php echo PUBLIC_PATH; ?>/assets/js/tabs.js"></script>
+
+        <!-- Masonry -->
+        <script src="<?php echo PUBLIC_PATH; ?>/assets/js/masonry.min.js" ></script>
+        <script src="<?php echo PUBLIC_PATH; ?>/assets/js/imagesloaded.js" ></script>
+        <!-- ENDS Masonry -->
+
+        <!-- Tweet -->
+        <link rel="stylesheet" href="<?php echo PUBLIC_PATH; ?>/assets/css/jquery.tweet.css" media="all"  /> 
+        <script src="<?php echo PUBLIC_PATH; ?>/assets/js/tweet/jquery.tweet.js" ></script> 
+        <!-- ENDS Tweet -->
+
+        <!-- superfish -->
+        <link rel="stylesheet" media="screen" href="<?php echo PUBLIC_PATH; ?>/assets/css/superfish.css" /> 
+        <script  src="<?php echo PUBLIC_PATH; ?>/assets/js/superfish-1.4.8/js/hoverIntent.js"></script>
+        <script  src="<?php echo PUBLIC_PATH; ?>/assets/js/superfish-1.4.8/js/superfish.js"></script>
+        <script  src="<?php echo PUBLIC_PATH; ?>/assets/js/superfish-1.4.8/js/supersubs.js"></script>
+        <!-- ENDS superfish -->
+
+        <!-- prettyPhoto -->
+        <script  src="<?php echo PUBLIC_PATH; ?>/assets/js/prettyPhoto/js/jquery.prettyPhoto.js"></script>
+        <link rel="stylesheet" href="<?php echo PUBLIC_PATH; ?>/assets/css/prettyPhoto.css"  media="screen" />
+        <!-- ENDS prettyPhoto -->
+
+        <!-- poshytip -->
+        <link rel="stylesheet" href="<?php echo PUBLIC_PATH; ?>/assets/js/poshytip-1.1/src/tip-twitter/tip-twitter.css"  />
+        <link rel="stylesheet" href="<?php echo PUBLIC_PATH; ?>/assets/js/poshytip-1.1/src/tip-yellowsimple/tip-yellowsimple.css"  />
+        <script  src="<?php echo PUBLIC_PATH; ?>/assets/js/poshytip-1.1/src/jquery.poshytip.min.js"></script>
+        <!-- ENDS poshytip -->
+
+
+        <!-- GOOGLE FONTS -->
+        <link href='http://fonts.googleapis.com/css?family=Allan:700' rel='stylesheet' type='text/css'>
+
+        <!-- Flex Slider -->
+        <link rel="stylesheet" href="<?php echo PUBLIC_PATH; ?>/assets/css/flexslider.css" >
+        <script src="<?php echo PUBLIC_PATH; ?>/assets/js/jquery.flexslider-min.js"></script>
+        <!-- ENDS Flex Slider -->
+
+
+        <!--[if IE 6]>
+        <link rel="stylesheet" href="<?php echo PUBLIC_PATH; ?>/assets/css/ie6-hacks.css" media="screen" />
+        <script type="text/javascript" src="<?php echo PUBLIC_PATH; ?>/assets/js/DD_belatedPNG.js"></script>
+                <script>
+                /* EXAMPLE */
+                DD_belatedPNG.fix('*');
+        </script>
+        <![endif]-->
+
+        <!-- Lessgrid -->
+        <link rel="stylesheet" media="all" href="<?php echo PUBLIC_PATH; ?>/assets/css/lessgrid.css"/>
+
+        <!-- modernizr -->
+        <script src="<?php echo PUBLIC_PATH; ?>/assets/js/modernizr.js"></script>
+
+        <style type="text/css">
+<?php echo $css; ?>
+        </style>
+
+        <script language="javascript" type="text/javascript">
+<?php echo $javascript; ?>
+        </script>
+
+    </head>
+
+    <body lang="en">
+
+        <!-- mobile-nav -->
+        <div id="mobile-nav-holder">
+            <div class="wrapper">
+                <ul id="mobile-nav">
+                    <li 
+                    <?php if (isset($current_menu_item) && $current_menu_item == 'index'): ?>
+                            class="current-menu-item"
+                        <?php endif; ?>>
+                        <a href="<?php echo PUBLIC_PATH; ?>/">home</a></li>
+
+
+                    <li
+                    <?php if (isset($current_menu_item) && $current_menu_item == 'blog'): ?>
+                            class="current-menu-item"
+                        <?php endif; ?>>
+                        <a href="<?php echo PUBLIC_PATH; ?>/blog">blog</a></li>
+
+                    <li
+                    <?php if (isset($current_menu_item) && $current_menu_item == 'blog'): ?>
+                            class="current-menu-item"
+                        <?php endif; ?>>
+                        <a href="<?php echo PUBLIC_PATH; ?>/about">about</a></li>
+
+
+                    <ul>
+                        <li><a href="<?php echo PUBLIC_PATH; ?>/about/fullwidth">Fullwidth Page</a></li>
+                        <li><a href="<?php echo PUBLIC_PATH; ?>/about/features">Features</a></li>
+                        <li><a href="<?php echo PUBLIC_PATH; ?>/about/typography">Typography</a></li>
+                        <li><a href="<?php echo PUBLIC_PATH; ?>/about/icons">Icons</a></li>
+                    </ul>
+                    </li>
+
+                    <li
+                    <?php if (isset($current_menu_item) && $current_menu_item == 'portfolio'): ?>
+                            class="current-menu-item"
+                        <?php endif; ?>>
+                        <a href="<?php echo PUBLIC_PATH; ?>/portfolio">portfolio</a></li>
+
+
+                    <li
+                    <?php if (isset($current_menu_item) && $current_menu_item == 'contact'): ?>
+                            class="current-menu-item"
+                        <?php endif; ?>>
+                        <a href="<?php echo PUBLIC_PATH; ?>/contact">contact</a></li>
+
+                    <li
+                    <?php if (isset($current_menu_item) && $current_menu_item == 'docs'): ?>
+                            class="current-menu-item"
+                        <?php endif; ?>>
+                        <a href="<?php echo PUBLIC_PATH; ?>/docs">docs</a></li>
+
+                    <li
+                    <?php if (isset($current_menu_item) && $current_menu_item == 'download'): ?>
+                            class="current-menu-item"
+                        <?php endif; ?>>
+                        <a href="<?php echo PUBLIC_PATH; ?>/assets/download/skf.tar.gz">download</a></li>
+
+                    <!-- <li><a href="http://luiszuno.com/blog/downloads/modus-html-template">Grab it!</a></li> -->
+                </ul>
+                <div id="nav-open"><a href="#">Menu</a></div>
+            </div>
+        </div>
+        <!-- ENDS mobile-nav -->
+
+        <header>
+
+
+            <div class="wrapper">
+
+                <a href="<?php echo PUBLIC_PATH; ?>/" id="logo"><img src="<?php echo PUBLIC_PATH; ?>/assets/images/logo.png" alt="Tandem"></a>
+
+                <nav>
+                    <ul id="nav" class="sf-menu">
+                        <li 
+                        <?php if (isset($current_menu_item) && $current_menu_item == 'index'): ?>
+                                class="current-menu-item"
+                            <?php endif; ?>>
+                            <a href="<?php echo PUBLIC_PATH; ?>/">home<span class="subheader">welcome</span></a></li>
+
+                        <li
+                        <?php if (isset($current_menu_item) && $current_menu_item == 'blog'): ?>
+                                class="current-menu-item"
+                            <?php endif; ?>>
+                            <a href="<?php echo PUBLIC_PATH; ?>/blog">blog<span class="subheader">read me</span></a></li>
+
+                        <li
+                        <?php if (isset($current_menu_item) && $current_menu_item == 'about'): ?>
+                                class="current-menu-item"
+                            <?php endif; ?>>
+                            <a href="<?php echo PUBLIC_PATH; ?>/about">about<span class="subheader">great features</span></a>
+                            <ul>
+                                <li><a href="<?php echo PUBLIC_PATH; ?>/about/fullwidth">Fullwidth Page</a></li>
+                                <li><a href="<?php echo PUBLIC_PATH; ?>/about/features">Features</a></li>
+                                <li><a href="<?php echo PUBLIC_PATH; ?>/about/typography">Typography</a></li>
+                                <li><a href="<?php echo PUBLIC_PATH; ?>/about/icons">Icons</a></li>
+                            </ul>
+                        </li>
+
+                        <li
+                        <?php if (isset($current_menu_item) && $current_menu_item == 'portfolio'): ?>
+                                class="current-menu-item"
+                            <?php endif; ?>>
+                            <a href="<?php echo PUBLIC_PATH; ?>/portfolio">portfolio<span class="subheader">recent work</span></a></li>
+
+                        <li
+                        <?php if (isset($current_menu_item) && $current_menu_item == 'contact'): ?>
+                                class="current-menu-item"
+                            <?php endif; ?>>
+                            <a href="<?php echo PUBLIC_PATH; ?>/contact">contact<span class="subheader">get in touch</span></a></li>
+
+                        <li
+                        <?php if (isset($current_menu_item) && $current_menu_item == 'docs'): ?>
+                                class="current-menu-item"
+                            <?php endif; ?>>
+                            <a href="<?php echo PUBLIC_PATH; ?>/docs">docs<span class="subheader">documentation</span></a></li>
+
+                        <li
+                        <?php if (isset($current_menu_item) && $current_menu_item == 'downloads'): ?>
+                                class="current-menu-item"
+                            <?php endif; ?>>
+                            <a href="<?php echo PUBLIC_PATH; ?>/assets/downloads/skf.tar.gz">download<span class="subheader">download</span></a></li>
+
+                    </ul>
+                </nav>
+
+                <div class="clearfix"></div>
+
+            </div>
+        </header>
+
